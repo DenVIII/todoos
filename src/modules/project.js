@@ -12,7 +12,8 @@ export default class Project {
     }
 
     deleteTask(id) {
-        const index = this._project.findIndex(item => item.id === id)
+        const index = this._project.findIndex(item => item.taskId === id)
+        if (index === -1) return
         this._project.splice(index, 1)
     }
 
@@ -22,5 +23,9 @@ export default class Project {
 
     getTitle() {
         return this.title
+    }
+
+    getProjectId() {
+        return this.projectId
     }
 }
