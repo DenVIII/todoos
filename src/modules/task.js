@@ -1,8 +1,10 @@
+import generateId from "../functions/generateId"
+
 export default class Task {
     constructor(title, dueDate, id, description = "-") {
       this.title = title
       this.dueDate = dueDate
-      this.id = id
+      this.taskId = generateId()
       this.description = description
     }
   
@@ -14,8 +16,8 @@ export default class Task {
       return this.dueDate
     }
   
-    getId() {
-      return this.id
+    getTaskId() {
+      return this.taskId
     }
   
     getDescription() {

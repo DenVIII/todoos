@@ -1,6 +1,9 @@
+import generateId from "../functions/generateId"
+
 export default class Project {
     constructor(title) {
         this.title = title
+        this.projectId = generateId()
         this._project = []
     }
 
