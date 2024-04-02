@@ -2,6 +2,8 @@ import Task from './modules/task.js'
 import Project from './modules/project.js'
 import Manager from './modules/projectsManager.js'
 
+// Testing area
+
 const newTask = new Task ("First task (second try)", "01.04.24", "12f")
 const newProject = new Project("New Project")
 const _manager = new Manager()
@@ -25,3 +27,7 @@ console.log(newProject2.getProject())
 console.log(newProject2.getTitle())
 
 console.log(_manager)
+
+newProject.deleteTask("12f")
+
+console.log(newProject.getProject())

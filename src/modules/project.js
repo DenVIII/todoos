@@ -8,6 +8,11 @@ export default class Project {
         this._project.push(task)
     }
 
+    deleteTask(id) {
+        const index = this._project.findIndex(item => item.id === id)
+        this._project.splice(index, 1)
+    }
+
     getProject() {
         return Array.from(this._project)
     }
