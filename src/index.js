@@ -4,7 +4,7 @@ import Manager from './modules/projectsManager.js'
 
 // Testing area
 
-const newTask = new Task ("First task (second try)", "01.04.24")
+const newTask = new Task ("First task (second try)")
 const newProject = new Project("New Project")
 const _manager = new Manager()
 
