@@ -6,6 +6,7 @@ export default class Task {
       this.dueDate = dueDate
       this.taskId = generateId()
       this.description = description
+      this.completed = false
     }
   
     getTitle() {
@@ -34,5 +35,9 @@ export default class Task {
   
     setDescription(description) {
       this.description = description
+    }
+
+    chageCompletionStatus() {
+      this.completed = !this.completed
     }
   }
