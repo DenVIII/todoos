@@ -1,0 +1,9 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+    border-collapse: collapse;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}

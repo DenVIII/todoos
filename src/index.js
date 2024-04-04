@@ -4,18 +4,11 @@ import Manager from './modules/projectsManager.js'
 
 // Testing area
 
-const newTask = new Task ("First task (second try)")
-const newProject = new Project("New Project")
+const defaultTask = new Task ("First task")
+const todayProject = new Project("Today")
 const _manager = new Manager()
 
-_manager.addNewProject(newProject)
-newProject.addNewTask(newTask)
+_manager.addNewProject(todayProject)
+todayProject.addNewTask(defaultTask)
 
-const newProject2 = new Project("Today")
-_manager.addNewProject(newProject2)
-
-newProject2.addNewTask({abc:11})
-
-console.log(_manager.getProjectsList())
-_manager.deleteProject(newProject2.getProjectId())
 console.log(_manager.getProjectsList())
