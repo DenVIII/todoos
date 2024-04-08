@@ -1,3 +1,11 @@
+:root {
+    --main-color: #f3f7fa;
+    --background-color: #f3d7ab; 
+    --text-color: #1e1f1d;
+    --secondary-color: #392F5A;
+    --accent-color: #EA2B1F;
+}
+
 *, ::after, ::before {
     box-sizing: border-box;
     border-collapse: collapse;
@@ -6,4 +14,47 @@
     padding: 0;
     -webkit-transition: 0.2s;
     transition: 0.2s;
+    list-style: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--main-color);
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.sidebar li {
+    background-color: var(--accent-color);
+    border: none;
+    width: 100%;
+    text-align: start;
+    font-size: 1.2rem;
+}
+
+ul > * {
+    padding: 10px 25px;
+}
+
+.user-project-list > li {
+    padding: 10px 0;
+}
+
+.default-projects {
+    margin-bottom: 40px;
+}
+
+#content {
+    background-color: var(--background-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 100px 0 20px;
+    gap: 30px;
 }
