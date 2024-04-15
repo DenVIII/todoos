@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>Todoos - your organizer-app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -19,22 +22,32 @@
     </nav>
     <main id="content">
       <div class="task-list">
-        <div class="task">Work on my project</div>
-        <div class="task">Workout</div>
-        <div class="task">Go for a walk</div>
+        <h2 class="title">Health:</h2>
+        <div class="task btn">
+          <p class="task-name">Work on my project</p>
+          <p class="due-date">04.04.24</p>
+        </div>
+        <div class="task btn active">
+          <p class="task-name">Workout</p>
+          <p class="due-date">04.04.24</p>
+        </div>
+        <div class="task btn">
+          <p class="task-name">Go for a walk</p>
+          <p class="due-date">04.04.24</p>
+        </div>
+        <button class="new-task btn">+</button>
       </div>
       <div class="task-description">
-        <h3>Title</h3>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Mollitia odit necessitatibus omnis consectetur quaerat assumenda optio hic a perspiciatis.
-          Doloremque, nihil. Autem blanditiis placeat architecto!
-        </p>
-        <br>
-        <p> 
-          Voluptas soluta dolores quia! Aut! Quam rerum similique, eveniet error quaerat distinctio adipisci!
-          Quae nisi accusamus quaerat sit modi, veritatis qui, unde cum at recusandae
-        </p>
-        <p class="due-date">04.04.24</p>
+        <h3>Workout</h3>
+        <div class="description">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Mollitia odit necessitatibus omnis consectetur quaerat assumenda optio hic a perspiciatis.
+          </p>
+          <br>
+          <p> 
+            Voluptas soluta dolores quia! Aut! Quam rerum similique
+          </p>
+        </div>
       </div>
     </main>
    <script src="main.js"></script>
