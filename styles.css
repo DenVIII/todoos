@@ -1,9 +1,13 @@
 :root {
     --main-color: #f3f7fa;
-    --background-color: #f3d7ab; 
+    --background-color: #d5f3ab;
+    --hovered-color: #edf0f2;
+    --shadow-color: rgb(193, 199, 204);
+    --btn-color: white; 
     --text-color: #1e1f1d;
     --secondary-color: #392F5A;
     --accent-color: #EA2B1F;
+    --elem-shadow: 3px 3px 4px var(--shadow-color);
 }
 
 *, ::after, ::before {
@@ -22,7 +26,29 @@ body {
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr;
     height: 100vh;
+    font-family: "Noto Sans";
 }
+
+.btn {
+    color: var(--text-color);
+    background-color: var(--btn-color);
+    box-shadow: var(--elem-shadow);
+}
+
+.btn:hover {
+    background-color: var(--hovered-color);
+    cursor: pointer;
+}
+
+.active {
+    box-shadow: 6px 6px 12px var(--shadow-color);
+}
+
+.active:hover {
+    background-color: var(--btn-color);
+}
+
+/* Sidebar */
 
 .sidebar {
     background-color: var(--main-color);
@@ -32,11 +58,10 @@ body {
 }
 
 .sidebar li {
-    background-color: var(--accent-color);
     border: none;
     width: 100%;
     text-align: start;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 ul > * {
@@ -51,10 +76,55 @@ ul > * {
     margin-bottom: 40px;
 }
 
+nav li:hover, nav h3:hover {
+    background-color: var(--hovered-color);
+    cursor: pointer;
+}
+
+/* main content */
+
 #content {
     background-color: var(--background-color);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 50px 100px 0 20px;
+    padding: 50px 100px 50px 20px;
     gap: 30px;
+}
+
+.task-list, .task-description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    padding: 30px 40px;
+    gap: 20px;
+}
+
+.task {
+    padding: 10px;
+    padding-bottom: 5px;
+    border-radius: 0.5rem;
+}
+
+.new-task {
+    font-size: 2rem;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.description {
+    margin-top: 20px;
+}
+
+.due-date {
+    text-align: right;
+    font-style: italic;
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: #62635e;
 }
