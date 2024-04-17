@@ -49,6 +49,36 @@ body {
     background-color: var(--btn-color);
 }
 
+.delete {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.3;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+.delete:before, .delete:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 24px;
+    width: 2px;
+    background-color: var(--text-color);
+}
+
+.delete:before {
+    transform: rotate(45deg);
+}
+
+.delete:after {
+    transform: rotate(-45deg);
+}
+
 /* Sidebar */
 
 .sidebar {
@@ -110,6 +140,7 @@ nav li:hover, nav h3:hover {
 }
 
 .task-list, .task-description {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
