@@ -107,7 +107,7 @@ ul > * {
     margin-bottom: 40px;
 }
 
-nav li:hover, nav h3:hover {
+nav li:hover {
     background-color: var(--hovered-color);
     cursor: pointer;
 }
@@ -119,15 +119,27 @@ nav li:hover, nav h3:hover {
 
 .header > h3 {
     display: inline;
+    cursor: default;
 }
 
-.new-project {
+.new-project-btn {
     display: inline;
     font-size: 1.5rem;
     width: 25px;
     height: 25px;
-    border-radius: 12.5px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--main-color);
+    color: var(--main-color);
+    text-align: center;
 }
+
+.header:hover > .new-project-btn {
+    cursor: pointer;
+    background-color: var(--text-color);
+    opacity: 0.3;
+}
+
 
 /* main content */
 
@@ -151,6 +163,8 @@ nav li:hover, nav h3:hover {
 }
 
 .task {
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
     padding-bottom: 5px;
     border-radius: 0.5rem;
@@ -170,9 +184,8 @@ nav li:hover, nav h3:hover {
 }
 
 .due-date {
-    text-align: right;
     font-style: italic;
-    margin-top: auto;
     font-size: 0.8rem;
-    color: #62635e;
+    color: var(--text-color);
+    opacity: 0.7;
 }
