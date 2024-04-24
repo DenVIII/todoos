@@ -22,9 +22,10 @@
           <button class="new-project-btn">+</button>
         </div>
         <li>Health</li>
+        <li class="new-project-input"><input type="text" placeholder="Project name" maxlength="50"></li>
       </ul>
     </nav>
-    <div class="wrapper">
+    <div class="wrapper hidden">
       <form novalidate class="new-task-form">
         <div class="form-labels">
           <label for="title">Title*:</label>
@@ -36,18 +37,6 @@
           <input id="due-date" name="due-date" type="date">
           <textarea id="description" name="description" cols="30" rows="3" ></textarea>
         </div>
-        <!-- <div>
-          <label for="title">Title*:</label>
-          <input id="title" name="title" type="text">
-        </div>
-        <div>
-          <label for="due-date">Due Date:</label>
-          <input id="due-date" name="due-date" type="date">
-        </div>
-        <div>
-          <label for="description">Description:</label>
-          <input id="description" name="description" minlength="3" maxlength="20" type="text">
-        </div> -->
         <div class="form-buttons">
           <button class="btn">Create</button>
           <button class="btn">Cancel</button>

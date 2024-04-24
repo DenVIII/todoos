@@ -81,6 +81,10 @@ body {
     transform: rotate(-45deg);
 }
 
+.hidden {
+    display: none;
+}
+
 /* Sidebar */
 
 .sidebar {
@@ -217,10 +221,6 @@ nav li:hover {
     width: 100%;
     height: 100%;
     background-color: #1e1f1d40;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .new-task-form {
@@ -270,4 +270,13 @@ nav li:hover {
 .form-buttons button {
     width: 75px;
     height: 30px;
+}
+
+/* New project input */
+
+.new-project-input input{
+    font-size: 1.1rem;
+    padding: 5px;
+    border: 1px solid var(--shadow-color);
+    border-radius: 5px;
 }
