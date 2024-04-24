@@ -1,0 +1,6 @@
+.new-project-input input{
+    font-size: 1.1rem;
+    padding: 5px;
+    border: 1px solid var(--shadow-color);
+    border-radius: 5px;
+}

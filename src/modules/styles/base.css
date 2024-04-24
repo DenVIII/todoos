@@ -1,0 +1,85 @@
+:root {
+    --main-color: #f3f7fa;
+    --background-color: #d5f3ab;
+    --hovered-color: #e2e9ee;
+    --shadow-color: #c2cad0;
+    --btn-color: white; 
+    --text-color: #1e1f1d;
+    --accent-color: #EA2B1F;
+    --elem-shadow: 3px 3px 4px var(--shadow-color);
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    border-collapse: collapse;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    list-style: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr auto;
+    height: 100vh;
+    width: 100%;
+    font-family: "Noto Sans";
+    position: relative;
+}
+
+.btn {
+    color: var(--text-color);
+    background-color: var(--btn-color);
+    box-shadow: var(--elem-shadow);
+    border: none;
+}
+
+.btn:hover {
+    background-color: var(--hovered-color);
+    cursor: pointer;
+}
+
+.active {
+    box-shadow: 6px 6px 12px var(--shadow-color);
+}
+
+.active:hover {
+    background-color: var(--btn-color);
+}
+
+.delete {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.3;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+.delete:before, .delete:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 24px;
+    width: 2px;
+    background-color: var(--text-color);
+}
+
+.delete:before {
+    transform: rotate(45deg);
+}
+
+.delete:after {
+    transform: rotate(-45deg);
+}
+
+.hidden {
+    display: none;
+}

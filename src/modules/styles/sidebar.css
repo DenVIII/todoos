@@ -1,0 +1,58 @@
+.sidebar {
+    background-color: var(--main-color);
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.sidebar li {
+    border: none;
+    width: 100%;
+    text-align: start;
+    font-size: 1.1rem;
+}
+
+ul > * {
+    padding: 10px 25px;
+}
+
+.user-project-list > li {
+    padding: 10px 0;
+}
+
+.default-projects {
+    margin-bottom: 40px;
+}
+
+nav li:hover {
+    background-color: var(--hovered-color);
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header > h3 {
+    display: inline;
+    cursor: default;
+}
+
+.new-project-btn {
+    display: inline;
+    font-size: 1.5rem;
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--main-color);
+    color: var(--main-color);
+    text-align: center;
+}
+
+.header:hover > .new-project-btn {
+    cursor: pointer;
+    background-color: var(--text-color);
+    opacity: 0.3;
+}
