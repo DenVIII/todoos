@@ -10,7 +10,11 @@ function renderUserProjects(projectsList = '') {
         newLine.textContent = element
         projectInput.before(newLine)
     });
-    
+}
+
+function toggleInputVisibility() {
+    const projectInput = document.querySelector('.new-project-input')
+    projectInput.classList.toggle('hidden')
 }
 
 function createSidebar() {
@@ -36,6 +40,9 @@ function createSidebar() {
     `
     sidebar.appendChild(defaultProjectsList)
     sidebar.appendChild(userProjectsList)
+
+    const newProjBtn = document.querySelector('.new-project-btn')
+    newProjBtn.addEventListener('click', toggleInputVisibility)
 }
 
 export {createSidebar, renderUserProjects}
