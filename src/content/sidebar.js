@@ -1,21 +1,4 @@
-function renderUserProjects(projectsList = '') {
-    const userProjects = document.querySelector('.user-projects')
-    if (projectsList === '') return
-    
-    const projectInput = document.querySelector('.new-project-input')
-    const projectsTitles = projectsList.map(element => element.title);
-
-    projectsTitles.forEach(element => {
-        const newLine = document.createElement('li')
-        newLine.textContent = element
-        projectInput.before(newLine)
-    });
-}
-
-function toggleInputVisibility() {
-    const projectInput = document.querySelector('.new-project-input')
-    projectInput.classList.toggle('hidden')
-}
+import { toggleInputVisibility, processUserInput } from "../functions/domManipulations"
 
 function createSidebar() {
     const sidebar = document.querySelector('.sidebar')
@@ -36,13 +19,16 @@ function createSidebar() {
             <h3>My Projects</h3>
             <button class="new-project-btn">+</button>
         </div>
-        <div class="new-project-input hidden"><input type="text" placeholder="Project name" maxlength="50"></div>
+        <div class="new-project-input hidden"><input id="new-project-input" type="text" placeholder="Project name" maxlength="50"></div>
     `
     sidebar.appendChild(defaultProjectsList)
     sidebar.appendChild(userProjectsList)
 
     const newProjBtn = document.querySelector('.new-project-btn')
     newProjBtn.addEventListener('click', toggleInputVisibility)
+
+    const newProjInput = document.querySelector('#new-project-input')
+    newProjInput.addEventListener('keydown', processUserInput)
 }
 
-export {createSidebar, renderUserProjects}
+export default createSidebar
