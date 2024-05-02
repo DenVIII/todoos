@@ -44,8 +44,9 @@ const renderTaskList = (e) => {
 
     const taskList = document.querySelector('.task-list')
     const listHeader = document.querySelector('.list-header')
+    const project = _manager.getProjectById(e.currentTarget.dataset.projectId)
 
-    listHeader.textContent = e.currentTarget.textContent
+    listHeader.textContent = project.title
 }
 
 export { createMainContent, renderTaskList }
