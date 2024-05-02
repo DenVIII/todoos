@@ -1,11 +1,14 @@
+import { renderTaskList } from "../content/main-content";
+
 function renderUserProjects(projectsList = '') {
     clearUserProjects()
     const projectInput = document.querySelector('.new-project-input')
-    const projectsTitles = projectsList.map(element => element.title);
 
-    projectsTitles.forEach(element => {
+    projectsList.forEach(element => {
         const newLine = document.createElement('li')
-        newLine.textContent = element
+        newLine.textContent = element.title
+        newLine.dataset.projectId = element.getProjectId()
+        newLine.addEventListener('click', renderTaskList)
         projectInput.before(newLine)
     });
 }

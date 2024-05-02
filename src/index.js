@@ -9,6 +9,7 @@ import Project from './modules/project.js'
 import Manager from './modules/projectsManager.js'
 import createSidebar from './content/sidebar.js'
 import { renderUserProjects } from './functions/render.js'
+import { createMainContent, renderTaskList } from './content/main-content.js'
 
 // Testing area
 
@@ -20,7 +21,8 @@ _manager.addNewProject(userProject)
 userProject.addNewTask(defaultTask)
 
 createSidebar()
-
+createMainContent()
+//renderTaskList()
 renderUserProjects(_manager.getProjectsList())
 
 export default _manager

@@ -1,10 +1,8 @@
-import Manager from "../modules/projectsManager"
 import Project from "../modules/project"
-import Task from "../modules/task"
 import { renderUserProjects } from "./render"
 import _manager from ".." 
 
-const processUserInput = (e) => {
+const addNewProject = (e) => {
     const newProjInput = document.querySelector('#new-project-input')
     if (e.which !== 13) return 
     if (newProjInput.value === '') return
@@ -22,4 +20,4 @@ function toggleInputVisibility() {
     projectInput.classList.toggle('hidden')
 }
 
-export {toggleInputVisibility, processUserInput}
+export {toggleInputVisibility, addNewProject}

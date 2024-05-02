@@ -1,4 +1,4 @@
-import { toggleInputVisibility, processUserInput } from "../functions/domManipulations"
+import { toggleInputVisibility, addNewProject } from "../functions/domManipulations"
 
 function createSidebar() {
     const sidebar = document.querySelector('.sidebar')
@@ -28,7 +28,7 @@ function createSidebar() {
     newProjBtn.addEventListener('click', toggleInputVisibility)
 
     const newProjInput = document.querySelector('#new-project-input')
-    newProjInput.addEventListener('keydown', processUserInput)
+    newProjInput.addEventListener('keydown', addNewProject)
 }
 
 export default createSidebar
