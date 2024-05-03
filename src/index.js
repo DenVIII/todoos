@@ -22,7 +22,7 @@ userProject.addNewTask(defaultTask)
 
 createSidebar()
 createMainContent()
-//renderTaskList()
+renderTaskList(_manager.getProjectsList()[0])()
 renderUserProjects(_manager.getProjectsList())
 
 export default _manager

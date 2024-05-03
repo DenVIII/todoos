@@ -8,7 +8,7 @@ function renderUserProjects(projectsList = '') {
         const newLine = document.createElement('li')
         newLine.textContent = element.title
         newLine.dataset.projectId = element.getProjectId()
-        newLine.addEventListener('click', renderTaskList)
+        newLine.addEventListener('click', renderTaskList())
         projectInput.before(newLine)
     });
 }

@@ -34,19 +34,67 @@ function createMainContent() {
         </p>
     `
     taskDescr.append(deleteBtn, taskHeader, description)
-
     content.append(taskList,taskDescr)
-    
 }
 
-const renderTaskList = (e) => {
-    if (!e) return
+function createTask(title, dueDate) {
+    const task = document.createElement('div')
+    const checkbox = document.createElement('button')
+    const container = document.createElement('div')
+    const taskTitle = document.createElement('p')
+    const taskDueDate = document.createElement('p')
+    task.classList.add('task', 'btn')
+    checkbox.classList.add('task-checkbox')
 
+    taskTitle.textContent = title
+    taskDueDate.textContent = dueDate
+    taskTitle.classList.add('task-name')
+    taskDueDate.classList.add('due-date')
+
+    container.append(taskTitle, taskDueDate)
+    task.append(container, checkbox)
+    return task
+}
+
+/* function renderDefaultProject(defaultProject) {
+    console.log(defaultProject)
     const taskList = document.querySelector('.task-list')
     const listHeader = document.querySelector('.list-header')
+
+    listHeader.textContent = defaultProject.title
+    defaultProject.getProject().forEach(task => {
+        taskList.appendChild(createTask(task.title, task.dueDate))
+    });
+}
+
+function renderTaskList(e) {
+    if (!e) return
     const project = _manager.getProjectById(e.currentTarget.dataset.projectId)
+    const taskList = document.querySelector('.task-list')
+    const listHeader = document.querySelector('.list-header')
 
     listHeader.textContent = project.title
+    project.getProject().forEach(task => {
+        taskList.appendChild(createTask(task.title, task.dueDate))
+    });
+} */
+
+function renderTaskList(defaultProject) {
+    return (e) => {
+        let project
+        if (!defaultProject) {
+            project = _manager.getProjectById(e.currentTarget.dataset.projectId)
+        } else {
+            project = defaultProject
+        }
+
+        const taskList = document.querySelector('.task-list')
+        const listHeader = document.querySelector('.list-header')
+        listHeader.textContent = project.title
+        project.getProject().forEach(task => {
+            taskList.appendChild(createTask(task.title, task.dueDate))
+        });
+    }
 }
 
 export { createMainContent, renderTaskList }
