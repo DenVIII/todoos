@@ -4,6 +4,7 @@ function createMainContent() {
     const content = document.querySelector('#content')
 
     const taskList = document.createElement('div')
+    const taskContainer = document.createElement('div')
     const deleteBtn = document.createElement('a')
     const listHeader = document.createElement('h2')
     const newTaskBtn = document.createElement('button')
@@ -14,11 +15,12 @@ function createMainContent() {
     taskList.classList.add('task-list')
     deleteBtn.href = '#'
     deleteBtn.classList.add('delete')
+    taskContainer.classList.add('container')
     listHeader.classList.add('list-header')
     listHeader.textContent = 'Header'
     newTaskBtn.classList.add('new-task', 'btn')
     newTaskBtn.textContent = '+'
-    taskList.append(deleteBtn, listHeader, newTaskBtn)
+    taskList.append(deleteBtn, listHeader, taskContainer, newTaskBtn)
 
     taskDescr.classList.add('task-description')
     taskHeader.classList.add('task-header')
@@ -89,10 +91,11 @@ function renderTaskList(defaultProject) {
         }
 
         const taskList = document.querySelector('.task-list')
+        const taskContainer = taskList.querySelector('.container')
         const listHeader = document.querySelector('.list-header')
         listHeader.textContent = project.title
         project.getProject().forEach(task => {
-            taskList.appendChild(createTask(task.title, task.dueDate))
+            taskContainer.appendChild(createTask(task.title, task.dueDate))
         });
     }
 }

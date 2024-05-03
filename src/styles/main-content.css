@@ -17,6 +17,12 @@
     gap: 20px;
 }
 
+.task-list .container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
 .task {
     display: flex;
     justify-content: space-between;
