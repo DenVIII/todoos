@@ -10,6 +10,7 @@ import Manager from './modules/projectsManager.js'
 import createSidebar from './content/sidebar.js'
 import { renderUserProjects } from './functions/render.js'
 import { createMainContent, renderTaskList } from './content/main-content.js'
+import { createNewTaskForm } from './content/newTaskForm.js'
 
 // Testing area
 
@@ -24,6 +25,7 @@ userProject.addNewTask(defaultSecondTask)
 
 createSidebar()
 createMainContent()
+createNewTaskForm()
 renderTaskList(_manager.getProjectsList()[0])()
 renderUserProjects(_manager.getProjectsList())
 
