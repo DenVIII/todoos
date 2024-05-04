@@ -20,4 +20,9 @@ function toggleInputVisibility() {
     projectInput.classList.toggle('hidden')
 }
 
-export {toggleInputVisibility, addNewProject}
+function toggleNewTaskFormVisibility() {
+    const newTaskForm = document.querySelector('body>.wrapper')
+    newTaskForm.classList.toggle('hidden')
+}
+
+export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility}

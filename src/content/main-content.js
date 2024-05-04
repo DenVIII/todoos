@@ -1,4 +1,5 @@
 import _manager from ".."
+import { toggleNewTaskFormVisibility } from "../functions/domManipulations"
 
 function createMainContent() {
     const content = document.querySelector('#content')
@@ -35,6 +36,7 @@ function createMainContent() {
             Voluptas soluta dolores quia! Aut! Quam rerum similique
         </p>
     `
+    newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
     taskDescr.append(deleteBtn, taskHeader, description)
     content.append(taskList,taskDescr)
 }
@@ -93,6 +95,9 @@ function renderTaskList(defaultProject) {
         const taskList = document.querySelector('.task-list')
         const taskContainer = taskList.querySelector('.container')
         const listHeader = document.querySelector('.list-header')
+        const newTaskBtn = document.querySelector('.new-task.btn')
+
+        newTaskBtn.dataset.projectId = project.getProjectId()
         listHeader.textContent = project.title
         project.getProject().forEach(task => {
             taskContainer.appendChild(createTask(task.title, task.dueDate))
@@ -103,6 +108,12 @@ function renderTaskList(defaultProject) {
 function clearTaskList() {
     const taskContainer = document.querySelector('.task-list').querySelector('.container')
     taskContainer.innerHTML = ''
+}
+
+const addNewTask = (e) => {
+    const taskContainer = document.querySelector('.task-list').querySelector('.container')
+    //project.
+
 }
 
 export { createMainContent, renderTaskList }
