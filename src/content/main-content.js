@@ -89,7 +89,7 @@ function renderTaskList(defaultProject) {
         } else {
             project = defaultProject
         }
-
+        clearTaskList()
         const taskList = document.querySelector('.task-list')
         const taskContainer = taskList.querySelector('.container')
         const listHeader = document.querySelector('.list-header')
@@ -98,6 +98,11 @@ function renderTaskList(defaultProject) {
             taskContainer.appendChild(createTask(task.title, task.dueDate))
         });
     }
+}
+
+function clearTaskList() {
+    const taskContainer = document.querySelector('.task-list').querySelector('.container')
+    taskContainer.innerHTML = ''
 }
 
 export { createMainContent, renderTaskList }
