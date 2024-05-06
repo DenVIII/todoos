@@ -68,6 +68,17 @@ function createNewTask() {
 
     renderTaskList(activeProject)()
     toggleNewTaskFormVisibility()
+    clearForm()
+}
+
+function clearForm() {
+    const titleInput = document.querySelector('#title')
+    const dateInput = document.querySelector('#due-date')
+    const descriptionInput = document.querySelector('#description')
+
+    titleInput.value = ''
+    dateInput.value = ''
+    descriptionInput.value = ''
 }
 
 export { createNewTaskForm }

@@ -91,10 +91,4 @@ function getActiveProjectId() {
     return document.querySelector('.new-task.btn').dataset.projectId
 }
 
-const addNewTask = (e) => {
-    const taskContainer = document.querySelector('.task-list').querySelector('.container')
-    //project.
-
-}
-
 export { createMainContent, renderTaskList, getActiveProjectId }
