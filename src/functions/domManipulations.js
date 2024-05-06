@@ -25,4 +25,10 @@ function toggleNewTaskFormVisibility() {
     newTaskForm.classList.toggle('hidden')
 }
 
-export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility}
+function setActiveTask(e) {
+    const tasks = document.querySelectorAll('.task.btn')
+    tasks.forEach(task => task.classList.remove('active'))
+    e.currentTarget.classList.add('active')
+}
+
+export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask}

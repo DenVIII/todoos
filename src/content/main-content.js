@@ -1,5 +1,5 @@
 import _manager from ".."
-import { toggleNewTaskFormVisibility } from "../functions/domManipulations"
+import { toggleNewTaskFormVisibility, setActiveTask } from "../functions/domManipulations"
 
 function createMainContent() {
     const content = document.querySelector('#content')
@@ -57,6 +57,7 @@ function createTask(title, dueDate) {
 
     container.append(taskTitle, taskDueDate)
     task.append(container, checkbox)
+    task.addEventListener('click', setActiveTask)
     return task
 }
 
