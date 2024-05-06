@@ -2,9 +2,9 @@ import generateId from "../functions/generateId"
 import { format } from "date-fns"
 
 export default class Task {
-    constructor(title, dueDate = format(new Date(), 'dd.MM.yy'), description = "-") {
+    constructor(title, dueDate = format(new Date(), 'MM.dd.yy'), description = "-") {
       this.title = title
-      this.dueDate = dueDate
+      this.dueDate = format(dueDate, 'MM.dd.yy')
       this.taskId = generateId()
       this.description = description
       this.completed = false

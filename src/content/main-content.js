@@ -60,29 +60,6 @@ function createTask(title, dueDate) {
     return task
 }
 
-/* function renderDefaultProject(defaultProject) {
-    console.log(defaultProject)
-    const taskList = document.querySelector('.task-list')
-    const listHeader = document.querySelector('.list-header')
-
-    listHeader.textContent = defaultProject.title
-    defaultProject.getProject().forEach(task => {
-        taskList.appendChild(createTask(task.title, task.dueDate))
-    });
-}
-
-function renderTaskList(e) {
-    if (!e) return
-    const project = _manager.getProjectById(e.currentTarget.dataset.projectId)
-    const taskList = document.querySelector('.task-list')
-    const listHeader = document.querySelector('.list-header')
-
-    listHeader.textContent = project.title
-    project.getProject().forEach(task => {
-        taskList.appendChild(createTask(task.title, task.dueDate))
-    });
-} */
-
 function renderTaskList(defaultProject) {
     return (e) => {
         let project
@@ -110,10 +87,14 @@ function clearTaskList() {
     taskContainer.innerHTML = ''
 }
 
+function getActiveProjectId() {
+    return document.querySelector('.new-task.btn').dataset.projectId
+}
+
 const addNewTask = (e) => {
     const taskContainer = document.querySelector('.task-list').querySelector('.container')
     //project.
 
 }
 
-export { createMainContent, renderTaskList }
+export { createMainContent, renderTaskList, getActiveProjectId }

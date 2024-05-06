@@ -1,4 +1,9 @@
 import { toggleNewTaskFormVisibility } from "../functions/domManipulations";
+import { getActiveProjectId } from "./main-content";
+import { format } from "date-fns";
+import { renderTaskList } from "./main-content";
+import Task from "../modules/task";
+import _manager from "..";
 
 function createNewTaskForm() {
     const formWrapper = document.createElement('div')
@@ -41,6 +46,28 @@ function createNewTaskForm() {
 
     cancelBtn.addEventListener('click', toggleNewTaskFormVisibility)
     formBackground.addEventListener('click', toggleNewTaskFormVisibility)
+    submitBtn.addEventListener('click', createNewTask)
+}
+
+function createNewTask() {
+    const titleInput = document.querySelector('#title').value
+    if (titleInput === '') return
+
+    let dateInput = document.querySelector('#due-date').value
+    let descriptionInput = document.querySelector('#description').value
+    const activeProject = _manager.getProjectById(getActiveProjectId())
+
+    if (dateInput === '') {
+        dateInput = format(new Date(), 'MM.dd.yy')
+    }
+    if (descriptionInput === '') {
+        descriptionInput = 'Place some text here'
+    }
+
+    activeProject.addNewTask(new Task(titleInput, dateInput, descriptionInput))
+
+    renderTaskList(activeProject)()
+    toggleNewTaskFormVisibility()
 }
 
 export { createNewTaskForm }
