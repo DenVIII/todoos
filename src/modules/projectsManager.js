@@ -4,17 +4,17 @@ export default class Manager {
     }
 
     getProjectsList() {
-        return Array.from(this._projectsList)
+        return this._projectsList
     }
 
     getProjectById(id) {
         const index = this.findProject(id)
         if (index === -1) return
-        return Array.from(this._projectsList)[index]
+        return this._projectsList[index]
     }
 
     findProject(id) {
-        const index = this._projectsList.findIndex(item => item.projectId === id)
+        const index = this._projectsList.findIndex(item => item.getProjectId() === id)
         return index
     }
 
@@ -23,7 +23,7 @@ export default class Manager {
     }
 
     deleteProject(id) {
-        const index = this._projectsList.findIndex(item => item.projectId === id)
+        const index = this._projectsList.findIndex(item => item.getProjectId() === id)
         if (index === -1) return
         this._projectsList.splice(index, 1)
     }

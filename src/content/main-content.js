@@ -58,7 +58,7 @@ function createTask(title, dueDate, id) {
 
     container.append(taskTitle, taskDueDate)
     task.append(container, checkbox)
-    task.addEventListener('click', setActiveTask)
+    task.addEventListener('click', setActiveTask())
     return task
 }
 
@@ -84,6 +84,15 @@ function renderTaskList(defaultProject) {
     }
 }
 
+function renderTaskDescription(task) {
+    const taskDescription = document.querySelector('.task-description')
+    const taskHeader = document.querySelector('.task-header')
+    const description = taskDescription.querySelector('.description')
+
+    taskHeader.textContent = task.title
+    description.textContent = task.description
+}
+
 function clearTaskList() {
     const taskContainer = document.querySelector('.task-list').querySelector('.container')
     taskContainer.innerHTML = ''
@@ -93,4 +102,8 @@ function getActiveProjectId() {
     return document.querySelector('.new-task.btn').dataset.projectId
 }
 
-export { createMainContent, renderTaskList, getActiveProjectId }
+function getActiveTaskId() {
+    return document.querySelector('.task.btn.active').dataset.taskId
+}
+
+export { createMainContent, renderTaskList, getActiveProjectId, getActiveTaskId, renderTaskDescription }

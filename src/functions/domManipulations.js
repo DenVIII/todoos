@@ -1,7 +1,8 @@
+import Task from "../modules/task"
 import Project from "../modules/project"
 import { renderUserProjects } from "./render"
 import _manager from ".." 
-import { getActiveProjectId } from "../content/main-content"
+import { getActiveProjectId, renderTaskDescription } from "../content/main-content"
 
 const addNewProject = (e) => {
     const newProjInput = document.querySelector('#new-project-input')
@@ -26,10 +27,23 @@ function toggleNewTaskFormVisibility() {
     newTaskForm.classList.toggle('hidden')
 }
 
-function setActiveTask(e) {
-    const tasks = document.querySelectorAll('.task.btn')
-    tasks.forEach(task => task.classList.remove('active'))
-    e.currentTarget.classList.add('active')
+function setActiveTask(defaultId) {
+    return (e) => {
+        let id
+        if (!defaultId) {
+            id = e.currentTarget.dataset.taskId
+        } else {
+            id = defaultId
+        }
+        const tasks = document.querySelectorAll('.task.btn')
+        tasks.forEach(task => task.classList.remove('active'))
+        tasks.forEach(task => {
+            if(task.dataset.taskId === id) {
+                task.classList.add('active')
+                renderTaskDescription(_manager.getProjectById(getActiveProjectId()).getTaskById(id))
+            }
+        })
+    }
 }
 
 export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask}

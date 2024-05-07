@@ -12,13 +12,13 @@ export default class Project {
     }
 
     deleteTask(id) {
-        const index = this._project.findIndex(item => item.taskId === id)
+        const index = this.getTaskIndex(id)
         if (index === -1) return
         this._project.splice(index, 1)
     }
 
     getProject() {
-        return Array.from(this._project)
+        return this._project
     }
 
     getTitle() {
@@ -27,5 +27,15 @@ export default class Project {
 
     getProjectId() {
         return this.projectId
+    }
+
+    getTaskById(id) {
+        const index = this.getTaskIndex(id)
+        if (index === -1) return
+        return this.getProject()[index]
+    }
+
+    getTaskIndex(id) {
+        return this._project.findIndex(item => item.getTaskId() === id)
     }
 }
