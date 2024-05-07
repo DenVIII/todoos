@@ -1,6 +1,7 @@
 import Project from "../modules/project"
 import { renderUserProjects } from "./render"
 import _manager from ".." 
+import { getActiveProjectId } from "../content/main-content"
 
 const addNewProject = (e) => {
     const newProjInput = document.querySelector('#new-project-input')

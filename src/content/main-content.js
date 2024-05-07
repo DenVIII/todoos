@@ -41,13 +41,14 @@ function createMainContent() {
     content.append(taskList,taskDescr)
 }
 
-function createTask(title, dueDate) {
+function createTask(title, dueDate, id) {
     const task = document.createElement('div')
     const checkbox = document.createElement('button')
     const container = document.createElement('div')
     const taskTitle = document.createElement('p')
     const taskDueDate = document.createElement('p')
     task.classList.add('task', 'btn')
+    task.dataset.taskId = id
     checkbox.classList.add('task-checkbox')
 
     taskTitle.textContent = title
@@ -78,7 +79,7 @@ function renderTaskList(defaultProject) {
         newTaskBtn.dataset.projectId = project.getProjectId()
         listHeader.textContent = project.title
         project.getProject().forEach(task => {
-            taskContainer.appendChild(createTask(task.title, task.dueDate))
+            taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId()))
         });
     }
 }
