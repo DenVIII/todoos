@@ -81,6 +81,8 @@ function renderTaskList(defaultProject) {
         project.getProject().forEach(task => {
             taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId()))
         });
+        setActiveTask(project.getProject()[0])()
+        /* Добавить рендер пустой страницы описания таска(когда у нас новый проект пустой) */
     }
 }
 

@@ -1,4 +1,3 @@
-import Task from "../modules/task"
 import Project from "../modules/project"
 import { renderUserProjects } from "./render"
 import _manager from ".." 
@@ -27,22 +26,26 @@ function toggleNewTaskFormVisibility() {
     newTaskForm.classList.toggle('hidden')
 }
 
-function setActiveTask(defaultId) {
+function setActiveTask(defaultTask) {
     return (e) => {
-        let id
-        if (!defaultId) {
-            id = e.currentTarget.dataset.taskId
+        let currentTask, taskId
+        if (!defaultTask) {
+            console.log('!defaultTask')
+            taskId = e.currentTarget.dataset.taskId
+            currentTask = _manager.getProjectById(getActiveProjectId()).getTaskById(taskId)
         } else {
-            id = defaultId
+            console.log(defaultTask)
+            currentTask = defaultTask
+            taskId = currentTask.getTaskId()
         }
-        const tasks = document.querySelectorAll('.task.btn')
-        tasks.forEach(task => task.classList.remove('active'))
-        tasks.forEach(task => {
-            if(task.dataset.taskId === id) {
+        const tasksList = document.querySelectorAll('.task.btn')
+        tasksList.forEach(task => task.classList.remove('active'))
+        tasksList.forEach(task => {
+            if(task.dataset.taskId === taskId) {
                 task.classList.add('active')
-                renderTaskDescription(_manager.getProjectById(getActiveProjectId()).getTaskById(id))
             }
         })
+        renderTaskDescription(currentTask)
     }
 }
 
