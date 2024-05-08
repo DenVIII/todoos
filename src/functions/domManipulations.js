@@ -30,11 +30,9 @@ function setActiveTask(defaultTask) {
     return (e) => {
         let currentTask, taskId
         if (!defaultTask) {
-            console.log('!defaultTask')
             taskId = e.currentTarget.dataset.taskId
             currentTask = _manager.getProjectById(getActiveProjectId()).getTaskById(taskId)
         } else {
-            console.log(defaultTask)
             currentTask = defaultTask
             taskId = currentTask.getTaskId()
         }
