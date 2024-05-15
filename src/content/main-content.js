@@ -1,5 +1,6 @@
 import _manager from ".."
 import { toggleNewTaskFormVisibility, setActiveTask } from "../functions/domManipulations"
+import Task from "../modules/task"
 
 function createMainContent() {
     const content = document.querySelector('#content')
@@ -81,8 +82,13 @@ function renderTaskList(defaultProject) {
         project.getProject().forEach(task => {
             taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId()))
         });
-        setActiveTask(project.getProject()[0])()
-        /* Добавить рендер пустой страницы описания таска(когда у нас новый проект пустой) */
+
+        const activeTask = project.getProject()[0]
+        if (activeTask) {
+            setActiveTask(project.getProject()[0])()
+        } else {
+            renderTaskDescription(new Task('Empty'))
+        }
     }
 }
 
