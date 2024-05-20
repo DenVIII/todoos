@@ -30,19 +30,4 @@ renderTaskList(_manager.getProjectsList()[0])()
 renderDefaultProjects(_manager.getProjectsList())
 renderUserProjects(_manager.getProjectsList())
 
-console.log(_manager.getAllTasks())
-
-/* const allTasksBtn = document.querySelector('.all-tasks')
-
-allTasksBtn.addEventListener('click', renderTaskList(getAllTasks))
-
-function getAllTasks() {
-    const allTasks = new Project('All Tasks')
-    _manager.getProjectsList().forEach(project => {
-        project.forEach(task => allTasks.addNewTask(task))
-    })
-
-    return allTasks
-} */
-
 export default _manager

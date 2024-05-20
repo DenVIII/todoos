@@ -49,7 +49,6 @@ export default class Manager {
         const allTasksProject = this.getProjectById('_00')
         allTasksProject.clearProject()
         for (let i = 4, n = this._projectsList.length; i < n; i++) {
-            console.log(this._projectsList[i])
             this._projectsList[i].getProject().forEach(task => {
                 allTasksProject.addNewTask(task)
             })
