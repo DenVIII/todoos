@@ -4,13 +4,14 @@ function renderUserProjects(projectsList = '') {
     clearUserProjects()
     const projectInput = document.querySelector('.new-project-input')
 
-    projectsList.forEach(element => {
+    for (let i = 4, n = projectsList.length; i < n; i++) {
+        const project = projectsList[i]
         const newLine = document.createElement('li')
-        newLine.textContent = element.title
-        newLine.dataset.projectId = element.getProjectId()
+        newLine.textContent = project.getTitle()
+        newLine.dataset.projectId = project.getProjectId()
         newLine.addEventListener('click', renderTaskList())
         projectInput.before(newLine)
-    });
+    }
 }
 
 function clearUserProjects() {
