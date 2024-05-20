@@ -6,12 +6,6 @@ function createSidebar() {
 
     const defaultProjectsList = document.createElement('ul')
     defaultProjectsList.classList.add('default-projects')
-    defaultProjectsList.innerHTML = `
-        <li class="today-tasks">Today</li>
-        <li class="tomorrow-tasks">Tomorrow</li>
-        <li class="week-tasks">This Week</li>
-        <li claas="all-tasks">All tasks</li>
-    `
     const userProjectsList = document.createElement('ul')
     userProjectsList.classList.add('user-projects')
     userProjectsList.innerHTML = `

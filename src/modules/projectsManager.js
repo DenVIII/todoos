@@ -23,6 +23,7 @@ export default class Manager {
 
     addNewProject(project) {
         this._projectsList.push(project)
+        this.updateAllTasksProject()
     }
 
     deleteProject(id) {
@@ -46,6 +47,7 @@ export default class Manager {
     
     updateAllTasksProject() {
         const allTasksProject = this.getProjectById('_00')
+        allTasksProject.clearProject()
         for (let i = 4, n = this._projectsList.length; i < n; i++) {
             console.log(this._projectsList[i])
             this._projectsList[i].getProject().forEach(task => {
@@ -57,5 +59,9 @@ export default class Manager {
     getAllTasks() {
         this.updateAllTasksProject()
         return this.getProjectById('_00')
+    }
+
+    updateDefaultProjects() {
+        this.updateAllTasksProject()
     }
 }

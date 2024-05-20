@@ -8,7 +8,7 @@ import Task from './modules/task.js'
 import Project from './modules/project.js'
 import Manager from './modules/projectsManager.js'
 import createSidebar from './content/sidebar.js'
-import { renderUserProjects } from './functions/render.js'
+import { renderUserProjects, renderDefaultProjects } from './functions/render.js'
 import { createMainContent, renderTaskList } from './content/main-content.js'
 import { createNewTaskForm } from './content/newTaskForm.js'
 
@@ -27,6 +27,7 @@ createSidebar()
 createMainContent()
 createNewTaskForm()
 renderTaskList(_manager.getProjectsList()[0])()
+renderDefaultProjects(_manager.getProjectsList())
 renderUserProjects(_manager.getProjectsList())
 
 console.log(_manager.getAllTasks())

@@ -42,4 +42,8 @@ export default class Project {
     getTaskIndex(id) {
         return this._project.findIndex(item => item.getTaskId() === id)
     }
+
+    clearProject() {
+        this._project = []
+    }
 }

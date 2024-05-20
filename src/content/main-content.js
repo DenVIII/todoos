@@ -67,6 +67,7 @@ function renderTaskList(defaultProject) {
     return (e) => {
         let project
         if (!defaultProject) {
+            _manager.updateDefaultProjects()
             project = _manager.getProjectById(e.currentTarget.dataset.projectId)
         } else {
             project = defaultProject
