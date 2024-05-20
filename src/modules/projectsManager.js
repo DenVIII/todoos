@@ -1,6 +1,9 @@
+import Project from "./project"
+
 export default class Manager {
     constructor(){
         this._projectsList = []
+        this.createDefaultProjects()
     }
 
     getProjectsList() {
@@ -28,4 +31,16 @@ export default class Manager {
         this._projectsList.splice(index, 1)
     }
 
+    createDefaultProjects() {
+        const projectsTitles = [
+            'All Tasks',
+            'This Week',
+            'Tomorrow',
+            'Today'
+        ]
+        for (let i = 0, n = projectsTitles.length; i < n; i++) {
+            const project = new Project(projectsTitles[i], `_0${i}`)
+            this.addNewProject(project)
+        }
+    }    
 }

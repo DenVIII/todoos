@@ -29,4 +29,17 @@ createNewTaskForm()
 renderTaskList(_manager.getProjectsList()[0])()
 renderUserProjects(_manager.getProjectsList())
 
+/* const allTasksBtn = document.querySelector('.all-tasks')
+
+allTasksBtn.addEventListener('click', renderTaskList(getAllTasks))
+
+function getAllTasks() {
+    const allTasks = new Project('All Tasks')
+    _manager.getProjectsList().forEach(project => {
+        project.forEach(task => allTasks.addNewTask(task))
+    })
+
+    return allTasks
+} */
+
 export default _manager

@@ -1,10 +1,14 @@
 import generateId from "../functions/generateId"
 
 export default class Project {
-    constructor(title) {
+    constructor(title, id) {
         this.title = title
-        this.projectId = generateId()
         this._project = []
+        if (id) {
+            this.projectId = id
+        } else {
+            this.projectId = generateId()
+        }
     }
 
     addNewTask(task) {
