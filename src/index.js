@@ -29,6 +29,8 @@ createNewTaskForm()
 renderTaskList(_manager.getProjectsList()[0])()
 renderUserProjects(_manager.getProjectsList())
 
+console.log(_manager.getAllTasks())
+
 /* const allTasksBtn = document.querySelector('.all-tasks')
 
 allTasksBtn.addEventListener('click', renderTaskList(getAllTasks))

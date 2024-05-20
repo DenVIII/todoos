@@ -42,5 +42,20 @@ export default class Manager {
             const project = new Project(projectsTitles[i], `_0${i}`)
             this.addNewProject(project)
         }
-    }    
+    }
+    
+    updateAllTasksProject() {
+        const allTasksProject = this.getProjectById('_00')
+        for (let i = 4, n = this._projectsList.length; i < n; i++) {
+            console.log(this._projectsList[i])
+            this._projectsList[i].getProject().forEach(task => {
+                allTasksProject.addNewTask(task)
+            })
+        }
+    }
+
+    getAllTasks() {
+        this.updateAllTasksProject()
+        return this.getProjectById('_00')
+    }
 }
