@@ -1,4 +1,5 @@
 import Project from "./project"
+import { format, parse, compareAsc } from "date-fns"
 
 export default class Manager {
     constructor(){
@@ -55,12 +56,33 @@ export default class Manager {
         }
     }
 
-    getAllTasks() {
-        this.updateAllTasksProject()
-        return this.getProjectById('_00')
+    updateThisWeekProject() {
+        const thisWeekProject = this.getProjectById('_01')
+        thisWeekProject.clearProject()
+        const endDate = this.getEndDate(7)
+
+        for (let i = 4, n = this._projectsList.length; i < n; i++) {
+            this._projectsList[i].getProject().forEach(task => {
+                const dueDate = parse(task.getDueDate(), 'MM.dd.yy', new Date())
+                if (compareAsc(dueDate, endDate) <= 0) {
+                    thisWeekProject.addNewTask(task)
+                }
+            })
+        }
+    }
+
+    getEndDate(days) {
+        const currentDate = new Date()
+        const endDate = new Date()
+        currentDate.setHours(0,0,0,0)
+        endDate.setDate(currentDate.getDate() + days)
+        endDate.setHours(23,59,59,0)
+
+        return endDate
     }
 
     updateDefaultProjects() {
         this.updateAllTasksProject()
+        this.updateThisWeekProject()
     }
 }
