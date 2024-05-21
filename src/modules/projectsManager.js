@@ -79,9 +79,23 @@ export default class Manager {
         for (let i = 4, n = this._projectsList.length; i < n; i++) {
             this._projectsList[i].getProject().forEach(task => {
                 const dueDate = parse(task.getDueDate(), 'MM.dd.yy', new Date())
-                console.log(dueDate, endDate)
                 if (compareAsc(dueDate, endDate) === 0) {
                     tomorrowProject.addNewTask(task)
+                }
+            })
+        }
+    }
+
+    updateTodayProject() {
+        const todayProject = this.getProjectById('_03')
+        todayProject.clearProject()
+        const endDate = this.getEndDate(0)
+
+        for (let i = 4, n = this._projectsList.length; i < n; i++) {
+            this._projectsList[i].getProject().forEach(task => {
+                const dueDate = parse(task.getDueDate(), 'MM.dd.yy', new Date())
+                if (compareAsc(dueDate, endDate) === 0) {
+                    todayProject.addNewTask(task)
                 }
             })
         }
@@ -101,5 +115,6 @@ export default class Manager {
         this.updateAllTasksProject()
         this.updateThisWeekProject()
         this.updateTomorrowProject()
+        this.updateTodayProject()
     }
 }
