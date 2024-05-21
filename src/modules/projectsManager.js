@@ -71,12 +71,28 @@ export default class Manager {
         }
     }
 
+    updateTomorrowProject() {
+        const tomorrowProject = this.getProjectById('_02')
+        tomorrowProject.clearProject()
+        const endDate = this.getEndDate(1)
+
+        for (let i = 4, n = this._projectsList.length; i < n; i++) {
+            this._projectsList[i].getProject().forEach(task => {
+                const dueDate = parse(task.getDueDate(), 'MM.dd.yy', new Date())
+                console.log(dueDate, endDate)
+                if (compareAsc(dueDate, endDate) === 0) {
+                    tomorrowProject.addNewTask(task)
+                }
+            })
+        }
+    }
+
     getEndDate(days) {
         const currentDate = new Date()
         const endDate = new Date()
         currentDate.setHours(0,0,0,0)
         endDate.setDate(currentDate.getDate() + days)
-        endDate.setHours(23,59,59,0)
+        endDate.setHours(0,0,0,0)
 
         return endDate
     }
@@ -84,5 +100,6 @@ export default class Manager {
     updateDefaultProjects() {
         this.updateAllTasksProject()
         this.updateThisWeekProject()
+        this.updateTomorrowProject()
     }
 }
