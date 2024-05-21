@@ -84,6 +84,12 @@ function renderTaskList(defaultProject) {
             taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId()))
         });
 
+        if (newTaskBtn.dataset.projectId[0] === '_') {
+            newTaskBtn.classList.add('hidden')
+        } else {
+            newTaskBtn.classList.remove('hidden')
+        }
+
         const activeTask = project.getProject()[0]
         if (activeTask) {
             setActiveTask(project.getProject()[0])()
