@@ -7,7 +7,8 @@ function createMainContent() {
 
     const taskList = document.createElement('div')
     const taskContainer = document.createElement('div')
-    const deleteBtn = document.createElement('a')
+    const deleteProjectBtn = document.createElement('a')
+    const deleteTaskBtn = document.createElement('a')
     const listHeader = document.createElement('h2')
     const newTaskBtn = document.createElement('button')
     const taskDescr = document.createElement('div')
@@ -15,31 +16,24 @@ function createMainContent() {
     const description = document.createElement('div')
 
     taskList.classList.add('task-list')
-    deleteBtn.href = '#'
-    deleteBtn.classList.add('delete')
+    deleteProjectBtn.href = '#'
+    deleteProjectBtn.classList.add('delete','delete-project')
+    deleteTaskBtn.href = '#'
+    deleteTaskBtn.classList.add('delete','delete-task')
     taskContainer.classList.add('container')
     listHeader.classList.add('list-header')
     listHeader.textContent = 'Header'
     newTaskBtn.classList.add('new-task', 'btn')
     newTaskBtn.textContent = '+'
-    taskList.append(deleteBtn, listHeader, taskContainer, newTaskBtn)
+    taskList.append(deleteProjectBtn, listHeader, taskContainer, newTaskBtn)
 
     taskDescr.classList.add('task-description')
     taskHeader.classList.add('task-header')
-    taskHeader.textContent = 'Header'
     description.classList.add('description')
-    description.innerHTML = `
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Mollitia odit necessitatibus omnis consectetur quaerat assumenda optio hic a perspiciatis.
-        </p>
-        <br>
-        <p> 
-            Voluptas soluta dolores quia! Aut! Quam rerum similique
-        </p>
-    `
+
     newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
-    taskDescr.append(deleteBtn, taskHeader, description)
-    content.append(taskList,taskDescr)
+    taskDescr.append(deleteTaskBtn, taskHeader, description)
+    content.append(taskList, taskDescr)
 }
 
 function createTask(title, dueDate, id, completed) {
@@ -110,6 +104,10 @@ function renderTaskDescription(task) {
 
     taskHeader.textContent = task.title
     description.textContent = task.description
+}
+
+function deleteTask(e) {
+
 }
 
 function clearTaskList() {
