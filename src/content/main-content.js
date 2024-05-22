@@ -1,5 +1,6 @@
 import _manager from ".."
 import { toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus } from "../functions/domManipulations"
+import { renderUserProjects } from "../functions/render"
 import Task from "../modules/task"
 
 function createMainContent() {
@@ -31,6 +32,7 @@ function createMainContent() {
     taskHeader.classList.add('task-header')
     description.classList.add('description')
 
+    deleteProjectBtn.addEventListener('click', deleteProject)
     deleteTaskBtn.addEventListener('click', deleteTask)
     newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
     taskDescr.append(deleteTaskBtn, taskHeader, description)
@@ -114,6 +116,13 @@ function deleteTask() {
     const activeProject = _manager.getProjectById(getActiveProjectId())
     activeProject.deleteTask(getActiveTaskId())
     renderTaskList(activeProject)()
+}
+
+function deleteProject() {
+    _manager.deleteProject(getActiveProjectId())
+    _manager.updateDefaultProjects()
+    renderUserProjects(_manager.getProjectsList())
+    renderTaskList(_manager.getProjectById('_00'))()
 }
 
 function clearTaskList() {
