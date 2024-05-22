@@ -35,7 +35,7 @@ export default class Project {
 
     getTaskById(id) {
         const index = this.getTaskIndex(id)
-        if (index === -1) return
+        if (index === -1) return -1
         return this.getProject()[index]
     }
 

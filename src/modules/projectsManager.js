@@ -22,6 +22,14 @@ export default class Manager {
         return index
     }
 
+    findProjectByTaskId(id) {
+        for (let i = 4, n = this._projectsList.length; i < n; i++) {
+            const project = this._projectsList[i]
+            if (project.getTaskById(id) != -1) return i
+        }
+        return -1
+    }
+
     addNewProject(project) {
         this._projectsList.push(project)
         this.updateAllTasksProject()
