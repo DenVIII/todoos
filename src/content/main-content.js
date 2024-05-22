@@ -31,6 +31,7 @@ function createMainContent() {
     taskHeader.classList.add('task-header')
     description.classList.add('description')
 
+    deleteTaskBtn.addEventListener('click', deleteTask)
     newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
     taskDescr.append(deleteTaskBtn, taskHeader, description)
     content.append(taskList, taskDescr)
@@ -75,6 +76,7 @@ function renderTaskList(defaultProject) {
         const taskContainer = taskList.querySelector('.container')
         const listHeader = document.querySelector('.list-header')
         const newTaskBtn = document.querySelector('.new-task.btn')
+        const deleteBtn = document.querySelector('.delete')
 
         newTaskBtn.dataset.projectId = project.getProjectId()
         listHeader.textContent = project.title
@@ -84,8 +86,10 @@ function renderTaskList(defaultProject) {
 
         if (newTaskBtn.dataset.projectId[0] === '_') {
             newTaskBtn.classList.add('hidden')
+            deleteBtn.classList.add('hidden')
         } else {
             newTaskBtn.classList.remove('hidden')
+            deleteBtn.classList.remove('hidden')
         }
 
         const activeTask = project.getProject()[0]
@@ -106,8 +110,10 @@ function renderTaskDescription(task) {
     description.textContent = task.description
 }
 
-function deleteTask(e) {
-
+function deleteTask() {
+    const activeProject = _manager.getProjectById(getActiveProjectId())
+    activeProject.deleteTask(getActiveTaskId())
+    renderTaskList(activeProject)()
 }
 
 function clearTaskList() {
