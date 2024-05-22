@@ -114,7 +114,10 @@ function renderTaskDescription(task) {
 
 function deleteTask() {
     const activeProject = _manager.getProjectById(getActiveProjectId())
-    activeProject.deleteTask(getActiveTaskId())
+    const project = _manager.findProjectByTaskId(getActiveTaskId())
+
+    project.deleteTask(getActiveTaskId())
+    _manager.updateDefaultProjects()
     renderTaskList(activeProject)()
 }
 

@@ -25,7 +25,7 @@ export default class Manager {
     findProjectByTaskId(id) {
         for (let i = 4, n = this._projectsList.length; i < n; i++) {
             const project = this._projectsList[i]
-            if (project.getTaskById(id) != -1) return i
+            if (project.getTaskById(id) != -1) return this._projectsList[i]
         }
         return -1
     }
