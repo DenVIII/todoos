@@ -39,7 +39,7 @@ function setActiveTask(defaultTask) {
         const tasksList = document.querySelectorAll('.task.btn')
         tasksList.forEach(task => task.classList.remove('active'))
         tasksList.forEach(task => {
-            if(task.dataset.taskId === taskId) {
+            if (task.dataset.taskId === taskId) {
                 task.classList.add('active')
             }
         })
@@ -47,4 +47,18 @@ function setActiveTask(defaultTask) {
     }
 }
 
-export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask}
+function changeTaskStatus(e) {
+    const statusBtn = e.currentTarget
+    const taskBtn = e.currentTarget.parentNode
+    const task = _manager.getProjectById(getActiveProjectId()).getTaskById(taskBtn.dataset.taskId)
+
+    if (!task.getCompletionStatus()) {
+        statusBtn.classList.add('checked')
+        task.chageCompletionStatus()
+    } else {
+        statusBtn.classList.remove('checked')
+        task.chageCompletionStatus()
+    }
+}
+
+export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus}

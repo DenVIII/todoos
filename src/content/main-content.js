@@ -1,5 +1,5 @@
 import _manager from ".."
-import { toggleNewTaskFormVisibility, setActiveTask } from "../functions/domManipulations"
+import { toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus } from "../functions/domManipulations"
 import Task from "../modules/task"
 
 function createMainContent() {
@@ -60,6 +60,7 @@ function createTask(title, dueDate, id) {
     container.append(taskTitle, taskDueDate)
     task.append(container, checkbox)
     task.addEventListener('click', setActiveTask())
+    checkbox.addEventListener('click', changeTaskStatus)
     return task
 }
 

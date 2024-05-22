@@ -25,7 +25,11 @@ export default class Task {
     getDescription() {
       return this.description
     }
-  
+    
+    getCompletionStatus() {
+      return this.completed
+    }
+
     setTitle(title) {
       this.title = title
     }

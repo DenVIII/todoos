@@ -28,7 +28,6 @@ function renderDefaultProjects(projectsList = '') {
 
 function clearUserProjects() {
     const userProjectsList = document.querySelector('.user-projects').querySelectorAll('li')
-
     userProjectsList.forEach((project) => project.remove())
 }
 
