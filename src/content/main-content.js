@@ -42,7 +42,7 @@ function createMainContent() {
     content.append(taskList,taskDescr)
 }
 
-function createTask(title, dueDate, id) {
+function createTask(title, dueDate, id, completed) {
     const task = document.createElement('div')
     const checkbox = document.createElement('button')
     const container = document.createElement('div')
@@ -60,6 +60,9 @@ function createTask(title, dueDate, id) {
     container.append(taskTitle, taskDueDate)
     task.append(container, checkbox)
     task.addEventListener('click', setActiveTask())
+    if (completed) {
+        checkbox.classList.add('checked')
+    }
     checkbox.addEventListener('click', changeTaskStatus)
     return task
 }
@@ -82,7 +85,7 @@ function renderTaskList(defaultProject) {
         newTaskBtn.dataset.projectId = project.getProjectId()
         listHeader.textContent = project.title
         project.getProject().forEach(task => {
-            taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId()))
+            taskContainer.appendChild(createTask(task.getTitle(), task.getDueDate(), task.getTaskId(), task.getCompletionStatus()))
         });
 
         if (newTaskBtn.dataset.projectId[0] === '_') {
