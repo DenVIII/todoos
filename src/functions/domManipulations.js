@@ -26,6 +26,14 @@ function toggleNewTaskFormVisibility() {
     newTaskForm.classList.toggle('hidden')
 }
 
+function toggleDescriptionInput() {
+    const description = document.querySelector('.description')
+    const descriptionInput = document.querySelector('.description-input')
+    descriptionInput.value = description.textContent
+    description.classList.toggle('hidden')
+    descriptionInput.classList.toggle('hidden')
+}
+
 function setActiveTask(defaultTask) {
     return (e) => {
         let currentTask, taskId
@@ -61,4 +69,4 @@ function changeTaskStatus(e) {
     }
 }
 
-export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus}
+export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus, toggleDescriptionInput}
