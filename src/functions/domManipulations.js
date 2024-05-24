@@ -69,4 +69,22 @@ function changeTaskStatus(e) {
     }
 }
 
-export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus, toggleDescriptionInput}
+function checkLength(e) {
+    const textarea = e.currentTarget
+    const textLength = textarea.value.length
+    /* const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const maxLength = isMobile ? 22 : 44 */ // For future mobile optimization
+    const maxLength = 44
+
+    if (textLength % maxLength === 0) {
+        for (let i = textLength - 1; i >= 0; i--) {
+            if (textarea.value[i] === ' ') {
+                textarea.value = textarea.value.slice(0, i) + '\n' + textarea.value.slice(i + 1)
+                break
+            }
+        }
+    }
+    textarea.rows = Math.floor(textLength / maxLength) + 1
+}
+
+export {toggleInputVisibility, addNewProject, toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus, toggleDescriptionInput, checkLength}

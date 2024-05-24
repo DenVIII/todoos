@@ -1,5 +1,5 @@
 import _manager from ".."
-import { toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus, toggleDescriptionInput } from "../functions/domManipulations"
+import { toggleNewTaskFormVisibility, setActiveTask, changeTaskStatus, toggleDescriptionInput, checkLength } from "../functions/domManipulations"
 import { renderUserProjects } from "../functions/render"
 import Task from "../modules/task"
 
@@ -15,7 +15,7 @@ function createMainContent() {
     const taskDescr = document.createElement('div')
     const taskHeader = document.createElement('h3')
     const description = document.createElement('div')
-    const descriptionInput = document.createElement('input')
+    const descriptionInput = document.createElement('textarea')
 
     taskList.classList.add('task-list')
     deleteProjectBtn.href = '#'
@@ -32,9 +32,11 @@ function createMainContent() {
     taskDescr.classList.add('task-description')
     taskHeader.classList.add('task-header')
     description.classList.add('description')
-    descriptionInput.classList.add('description-input', 'hidden1')
+    descriptionInput.classList.add('description-input', 'hidden')
+    descriptionInput.rows = '1'
 
     description.addEventListener('dblclick', toggleDescriptionInput)
+    descriptionInput.addEventListener('input', checkLength)
     deleteProjectBtn.addEventListener('click', deleteProject)
     deleteTaskBtn.addEventListener('click', deleteTask)
     newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
