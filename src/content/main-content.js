@@ -37,6 +37,7 @@ function createMainContent() {
 
     description.addEventListener('dblclick', toggleDescriptionInput)
     descriptionInput.addEventListener('input', checkLength)
+    descriptionInput.addEventListener('keypress', updateTaskDescription)
     deleteProjectBtn.addEventListener('click', deleteProject)
     deleteTaskBtn.addEventListener('click', deleteTask)
     newTaskBtn.addEventListener('click', toggleNewTaskFormVisibility)
@@ -144,6 +145,16 @@ function getActiveProjectId() {
 
 function getActiveTaskId() {
     return document.querySelector('.task.btn.active').dataset.taskId
+}
+
+function updateTaskDescription(e) {
+    if (e.which !== 13) return
+    const task = _manager.getProjectById(getActiveProjectId()).getTaskById(getActiveTaskId())
+    const description = document.querySelector('.description-input').value
+    
+    task.setDescription(description)
+    toggleDescriptionInput()
+    renderTaskDescription(task)
 }
 
 export { createMainContent, renderTaskList, getActiveProjectId, getActiveTaskId, renderTaskDescription }
