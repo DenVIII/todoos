@@ -13,15 +13,7 @@ import { createMainContent, renderTaskList } from './content/main-content.js'
 import { createNewTaskForm } from './content/newTaskForm.js'
 
 // Testing area
-
-const defaultFirstTask = new Task ("First task")
-const defaultSecondTask = new Task ("Second task")
-const userProject = new Project("Health")
 const _manager = new Manager()
-
-_manager.addNewProject(userProject)
-userProject.addNewTask(defaultFirstTask)
-userProject.addNewTask(defaultSecondTask)
 
 createSidebar()
 createMainContent()

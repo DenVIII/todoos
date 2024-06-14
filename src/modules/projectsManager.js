@@ -1,10 +1,37 @@
 import Project from "./project"
-import { format, parse, compareAsc } from "date-fns"
+import Task from "./task"
+import { parse, compareAsc } from "date-fns"
 
 export default class Manager {
     constructor(){
         this._projectsList = []
-        this.createDefaultProjects()
+        this.initialLoad()
+    }
+
+    initialLoad() {
+        if (!localStorage.getItem('manager')) {
+            const defaultFirstTask = new Task ("Drink a glass of water in the morning")
+            const defaultSecondTask = new Task ("Workout")
+            const defaultUserProject = new Project("Health")
+            this.createDefaultProjects()
+            defaultUserProject.addNewTask(defaultFirstTask)
+            defaultUserProject.addNewTask(defaultSecondTask)
+            this.addNewProject(defaultUserProject)
+        } else {
+            const storedManagerData = JSON.parse(localStorage.getItem('manager'))
+            storedManagerData.forEach(project => {
+                const newProject = new Project(project.title, project.projectId)
+                project._project.forEach(task => {
+                    const newTask = new Task( task.title, task.dueDate, task.description )
+                    newProject.addNewTask(newTask)
+                })
+                this._projectsList.push(newProject)
+            })
+        }
+    }
+
+    updateLocalStorage() {
+        localStorage.setItem('manager', JSON.stringify(this.getProjectsList()))
     }
 
     getProjectsList() {
@@ -33,6 +60,7 @@ export default class Manager {
     addNewProject(project) {
         this._projectsList.push(project)
         this.updateAllTasksProject()
+        this.updateLocalStorage()
     }
 
     deleteProject(id) {

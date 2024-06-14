@@ -75,6 +75,7 @@ function renderTaskList(defaultProject) {
         let project
         if (!defaultProject) {
             _manager.updateDefaultProjects()
+            _manager.updateLocalStorage()
             project = _manager.getProjectById(e.currentTarget.dataset.projectId)
         } else {
             project = defaultProject
@@ -124,12 +125,14 @@ function deleteTask() {
 
     project.deleteTask(getActiveTaskId())
     _manager.updateDefaultProjects()
+    _manager.updateLocalStorage()
     renderTaskList(activeProject)()
 }
 
 function deleteProject() {
     _manager.deleteProject(getActiveProjectId())
     _manager.updateDefaultProjects()
+    _manager.updateLocalStorage()
     renderUserProjects(_manager.getProjectsList())
     renderTaskList(_manager.getProjectById('_00'))()
 }
@@ -155,6 +158,7 @@ function updateTaskDescription(e) {
     task.setDescription(description)
     toggleDescriptionInput()
     renderTaskDescription(task)
+    _manager.updateLocalStorage()
 }
 
 export { createMainContent, renderTaskList, getActiveProjectId, getActiveTaskId, renderTaskDescription }
